@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { snapshot, useSnapshot } from "valtio";
+import { useSnapshot } from "valtio";
 import {
   headContainerAnimation,
   headContentAnimation,
@@ -9,19 +9,31 @@ import {
 
 import state from "../store";
 import CustomButton from "../components/CustomButton";
+import { useAuth } from "@clerk/clerk-react"; // Import useAuth from Clerk
 
 const Home = () => {
   const snap = useSnapshot(state);
+  const { signOut } = useAuth(); // Get the signOut method from useAuth
+
   return (
     <AnimatePresence>
       {snap.intro && (
         <motion.section className="home" {...slideAnimation("left")}>
           <motion.header {...slideAnimation("down")}>
-            <img
-              src="./threejs.png"
-              alt="logo"
-              className="w-8 h-8 object-contain"
-            />
+            <div className="flex flex-row flex-end gap-10">
+              {/* <img
+                src="./threejs.png"
+                alt="logo"
+                className="w-8 h-8 object-contain"
+              /> */}
+
+              <CustomButton
+                type="filled"
+                title="Logout"
+                handleClick={signOut}
+                customStyles="ml-auto px-4 py-2.5 font-bold text-sm"
+              />
+            </div>
           </motion.header>
           <motion.div className="home-content" {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
