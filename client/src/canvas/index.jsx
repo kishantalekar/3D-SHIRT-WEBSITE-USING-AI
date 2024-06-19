@@ -3,6 +3,7 @@ import { Environment, Center } from "@react-three/drei";
 import Backdrop from "./Backdrop";
 import CameraRig from "./CameraRig";
 import Shirt from "./Shirt";
+import { useRef } from "react";
 
 const CanvasModel = () => {
   return (

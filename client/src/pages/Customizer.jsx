@@ -130,15 +130,22 @@ const Customizer = () => {
             </div>
           </motion.div>
           <motion.div
-            className="absolute z-10 top-5 right-5"
+            className="absolute z-10 top-5 right-5 flex flex-row gap-5"
             {...fadeAnimation}
           >
+            <CustomButton
+              type="filled"
+              title="Dowload"
+              handleClick={() => downloadCanvasToImage()}
+              customStyles={`w-fit px-4 py-2.5 font-bold text-sm`}
+            />
             <CustomButton
               type="filled"
               title="Go Back"
               handleClick={() => (state.intro = true)}
               customStyles={`w-fit px-4 py-2.5 font-bold text-sm`}
             />
+            {/* <div style={{ paddingRight: 20 }}> </div> */}
           </motion.div>
           <motion.div
             className="filtertabs-container"
